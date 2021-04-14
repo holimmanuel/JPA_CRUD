@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Soal</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+</head>
+<body>
+<H1>Input Soal</H1>
+
+
+
+
+<form action="#" th:action="@{/plotmatakuliah/view}" th:object="${plotmatakuliah}" method="post">
+
+
+ 
+                  
+                  
+<div class="mb-3">
+  <label for="nama" class="form-label">MataKuliah</label>
+ <select th:field="*{matakuliah}">
+                         <option value=""> -- </option>
+                         <option th:each="matakuliah : ${listMataKuliah}"
+                            th:value="${matakuliah.idMataKuliah}"
+                            th:utext="${matakuliah.namaMataKuliah}"/>
+</select>
+</div>
+
+<div class="mb-3">
+  <label for="mahasiswa" class="form-label">Mahasiswa</label>
+ <select th:field="*{mahasiswa}">
+                         <option value=""> -- </option>
+                         <option th:each="mahasiswa : ${listMahasiswa}"
+                            th:value="${mahasiswa.idMahasiswa}"
+                            th:utext="${mahasiswa.namaMahasiswa}"/>
+</select>
+</div>
+
+<div class="mb-3">
+  <label for="dosen" class="form-label">Dosen</label>
+ <select th:field="*{dosen}">
+                         <option value=""> -- </option>
+                         <option th:each="dosens : ${listDosen}"
+                            th:value="${dosens.idDosen}"
+                            th:utext="${dosens.namaDosen}"/>
+</select>
+</div>
+
+<div class="mb-3">
+
+<select id="multiSelectElementsSelected"
+            name="multiSelectElementsSelected"
+            multiple="multiple"
+            th:field="*{lstSoal}">
+
+        <option th:each="soal,row : ${listSoal}"
+                th:value="${soal.id}"
+                th:text="${soal.namaSoal}"></option>
+</select>
+</div>
+<div class="mb-3">
+<input type="hidden" th:field="*{idPlotMataKuliah}">
+
+ <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>
